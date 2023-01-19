@@ -24,13 +24,14 @@ class UserService {
     }
 
     public static async getUser(id: number){
-        const user = await details.createQueryBuilder("contact").leftJoinAndSelect('contact.details', 'user').where('contact.details = :detailsId', {detailsId: id}).getOne()
+        // const user = await details.createQueryBuilder("contact").leftJoinAndSelect('contact.details', 'user').where('contact.details = :detailsId', {detailsId: id}).getOne()
+        const user = await details.findOne({where:{id: id}})
         return user;
     }
 
     public static async getUsers(){
         // const user = await details.createQueryBuilder("contact").leftJoinAndSelect('contact.details', 'user').getMany();
-        const user = await details.find()
+        const user = await details.find()  
         return user;
     }
 
